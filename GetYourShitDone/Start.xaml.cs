@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.IO;
+using System.ComponentModel;
 
 namespace GetYourShitDone
 {
@@ -41,6 +43,20 @@ namespace GetYourShitDone
             {
                 w.Hide();
             }
+        }
+
+        private void base_onclose(object sender, CancelEventArgs e)
+        {
+            string file = AppDomain.CurrentDomain.BaseDirectory + @"\settings.conf";
+            if (File.Exists(file))
+            {
+                File.Delete(file);
+            }
+            if (w.Tasks.Count > 0)
+            {
+                w.saveAllTasks(file);
+            }
+            Application.Current.Shutdown();
         }
     }
 }
