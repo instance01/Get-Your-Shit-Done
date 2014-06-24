@@ -20,12 +20,12 @@ namespace GetYourShitDone
     public partial class Start : Window
     {
         MainWindow w;
-        bool hidden = true;
+        bool hidden = false;
         public Start()
         {
             InitializeComponent();
             w = new MainWindow();
-            w.Show();
+            w.Hide();
             this.Left = System.Windows.SystemParameters.PrimaryScreenWidth - 65;
             this.Top = System.Windows.SystemParameters.PrimaryScreenHeight - 110;
         }
